@@ -61,13 +61,7 @@ void grow_matrix(struct matrix *m, int newcols) {
 */
 void print_matrix(struct matrix *m) {
   printf("[ ");
-  //  m[0][0] = 1;
-  int c , r ;
-  while (c <m.col){
-    printf("0");
-    c++;
-  }
-  // printf("%d",m[0][0]);
+  printf("%d",m[0][0]);
 }
 /*-------------- void ident() --------------
   Inputs: struct matrix *m <-- assumes m is a square matrix
@@ -128,8 +122,7 @@ struct matrix * make_scale(double x, double y, double z) {
   angle of rotation and X as the axis of rotation.
 ====================*/
 struct matrix * make_rotX(double theta) {
-
- ;}
+}
 /*======== struct matrix * make_rotY() ==========
   Inputs: double theta
   Returns: The rotation matrix created using theta as the
@@ -143,5 +136,4 @@ Returns: The rotation matrix created using theta as the
 angle of rotation and Z as the axis of rotation.
 ====================*/
 struct matrix * make_rotZ(double theta) {
- 
 }

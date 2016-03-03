@@ -11,6 +11,7 @@ struct matrix *edges;
 struct matrix *transform;
 edges = new_matrix(4, 4);
 transform = new_matrix(4, 4);
+print_matrix(edges);
 free_matrix( transform );
 free_matrix( edges );
 } 
