@@ -16,8 +16,9 @@ edges = new_matrix(4, 4);
 // edges->m[2][2] = 69;
  //print_matrix(edges);
  //transform = new_matrix(4, 4);
- ident(edges);
-print_matrix(edges);
+ //ident(edges);
+ scalar_mult(2.2 , edges);
+ print_matrix(edges);
 //free_matrix( transform );
 free_matrix( edges );
 } 

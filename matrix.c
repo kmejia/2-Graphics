@@ -81,29 +81,32 @@ void print_matrix(struct matrix *m) {
   turns m in to an identity matrix
 */
 void ident(struct matrix *m) {
-  int r,c;
-  r=0;c=0;
-  /* for (r=0;r<(m->rows);r++){ */
-  /*   for (c=0;c<(m->cols);c++){ */
-  /*     if (r==c){ */
-  /* 	m->m[r][c]=1;} */
-  /*     else{ */
-  /* 	m->m[r][c]=0;} */
-  /*   } */
-  /* } */
-  while (r < (m->rows)){
-    print_matrix(m);
-    c = 0;
-    while (c <(m->cols)){
-      if(r==c) {(m->m[r][c]) =1;
+  int row,col;
+  row=0;
+  col=0;
+  for (row=0;row<(m->rows);row++){
+    for (col=0;col<(m->cols);col++){
+      if (row==col){
+  	m->m[row][col]=1.0;
       }
-      else{(m->m[r][c]) =0;
+      else{
+  	m->m[row][col]=0.0;
       }
-      c++;
     }
+  } 
+  // while (r < (m->rows)){
+  //print_matrix(m);
+  // c = 0;
+  //while (c <(m->cols)){
+  //   if(r==c) {(m->m[r][c]) =1;
+  //}
+  //else{(m->m[r][c]) =0;
+  //}
+  // c++;
+  // }
+  
+  //r++;
     
-    r++;
-  }
 }
 /*-------------- void scalar_mult() --------------
   Inputs: double x
@@ -156,7 +159,10 @@ void copy_matrix(struct matrix *a, struct matrix *b) {
 
 
 //struct matrix * make_translate(double x, double y, double z) {
-//}
+//int r=0;
+//int c=0;
+
+}
 /*======== struct matrix * make_scale() ==========
   Inputs: int x
   int y
