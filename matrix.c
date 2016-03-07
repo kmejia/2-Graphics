@@ -129,28 +129,31 @@ void scalar_mult(double x, struct matrix *m) {
   a*b -> b
 */
 void matrix_mult(struct matrix *a, struct matrix *b) {
-  struct matrix *ans = new_matrix(a->rows, b->cols);
-  int i,j,k;//a's row,b's col and a's col
-  //double x,n;
-  double sum;//sum of i,j components
-  for(i=0;i<(a->rows);i++) {
-    for( j=0;j<(b->lastcol);j++) {
-      sum=0;//resets every time
-      for(k=0;k< (a->lastcol);k++){
-	sum = (a->m[i][k]) *(b->m[k][j]) +sum;
+/* # of columns in m0 = # of rows in m1 */
+/*               1 */
+/* [a b c]  *  [ 2 ]   = [1a +2b +3c] */
+/*               3 */
+/* 1 * 3     3  * 1 */
+/* ..the 2 inners must be the same */
+/* ..2 outers make up the new matrix */
+/* [A*B][B*C] = [A*C] */
+
+/*   a b c    1 4        (1a+2b+3c) (4a+5b+6c) */
+/* [ d e f ] [2 5]  =   [ (1d+2e+3f) (4d+5e+6f)] */
+/*  g h i     3 6          (1g+2h+3i) (4g+5h+6i) */
+  struct matrix *ans = new_matrix(b->rows,b->cols);
+  copy_matrix(b,ans);//b ultimately gets transformed
+  //ans becomes a dummy version of b
+  int i,j,k;
+  for(i = 0; i < (b->cols); i++){
+    for(j = 0; j < (a->rows); j++){
+      b->m[j][i]=0;//sum starts at zero for every col of b and every row of a
+	for(k = 0; k <( a->cols); k++){
+	  b->m[j][i]+=a->m[j][k]*ans->m[k][i];//shuffling thru the entrees;
+	}
       }
-      ans->m[i][j] =sum;
-      if ((ans->lastcol)<  (ans->cols)) {
-	ans->lastcol++;
-      }
-      
-
-
-
     }
-  }
-  //  after the loop, turn ans into theb
-  copy_matrix(ans,b);
+  //b leaves the fxn as a diff matrix
 }
 
 /*-------------- void copy_matrix() --------------

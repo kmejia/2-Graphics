@@ -49,6 +49,14 @@ Go through points 2 at a time and call draw_line to add that line
 to the screen
 ====================*/
 void draw_lines( struct matrix * points, screen s, color c) {
+ int i;
+ for(i=0; i < points->lastcol-1; i+=2) {//draw aline for every point [column]to the right
+    int x1 = points->m[0][i];
+    int y1 = points->m[1][i];
+    int x2 = points->m[0][i+1];
+    int y2 = points->m[1][i+1];
+    draw_line(x1, y1, x2, y2, s, c);
+  }
 }
 void draw_line(int x0, int y0, int x1, int y1, screen s, color c) {
 int x, y, d, dx, dy;
